@@ -3,11 +3,14 @@ package com.cpd.hotel_system.hotel_management_service_api.entity;
 import java.math.BigDecimal;
 import java.sql.Blob;
 import java.time.LocalDateTime;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -38,4 +41,7 @@ public class Hotel {
 
     @Column(name = "starting_from")
     private BigDecimal startingFrom;
+
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
+    private List<Branch> branches;
 }
